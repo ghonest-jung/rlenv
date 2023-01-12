@@ -133,3 +133,31 @@ def test2():
     assert reward == 1
     assert done is True
     assert info['num_done_tasks'] == 2
+
+
+def test3():
+    env = GridTSP((3, 3), (2, 1), [(1, 0), (2, 2)])
+
+    board, reward, done, info = env.step(GridTSP.RIGHT)
+
+    assert reward == 1
+    assert done is False
+    assert info['num_done_tasks'] == 1
+
+    board, reward, done, info = env.step(GridTSP.LEFT)
+
+    assert reward == env.reward_default
+    assert done is False
+    assert info['num_done_tasks'] == 1
+
+    board, reward, done, info = env.step(GridTSP.LEFT)
+
+    assert reward == env.reward_default
+    assert done is False
+    assert info['num_done_tasks'] == 1
+
+    board, reward, done, info = env.step(GridTSP.UP)
+
+    assert reward == 1
+    assert done is True
+    assert info['num_done_tasks'] == 2
