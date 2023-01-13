@@ -1,6 +1,3 @@
-import numpy as np
-
-
 class GridTSP:
     STAY: int = 0
     UP: int = 1
@@ -17,7 +14,7 @@ class GridTSP:
         self.tasks: list[tuple] = tasks
         self.reward_default: float = reward_default
 
-        self.board = np.zeros(self.size, dtype=int)
+        self.board = [[0 for c in range(self.size[1])] for r in range(self.size[0])]
         self.r: int = 0
         self.c: int = 0
         self.info: dict = {}
@@ -25,7 +22,7 @@ class GridTSP:
         self.reset()
 
     def reset(self):
-        self.board = np.zeros(self.size, dtype=int)
+        self.board = [[0 for c in range(self.size[1])] for r in range(self.size[0])]
         self.r = self.start[0]
         self.c = self.start[1]
 
