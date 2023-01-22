@@ -1,14 +1,13 @@
 class GridTSP:
-    STAY: int = 0
-    UP: int = 1
-    DOWN: int = 2
-    LEFT: int = 3
-    RIGHT: int = 4
+    UP: int = 0
+    DOWN: int = 1
+    LEFT: int = 2
+    RIGHT: int = 3
 
-    DELTA_R = [0, -1, 1, 0, 0]
-    DELTA_C = [0, 0, 0, -1, 1]
+    DELTA_R = [-1, 1, 0, 0]
+    DELTA_C = [0, 0, -1, 1]
 
-    def __init__(self, size: tuple, start: tuple, tasks: list, reward_default: float = -0.01):
+    def __init__(self, size: tuple, start: tuple, tasks: list, reward_default: float = 0):
         self.size: tuple = size
         self.start: tuple = start
         self.tasks: list[tuple] = tasks

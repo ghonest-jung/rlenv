@@ -10,14 +10,6 @@ def test1():
     assert env.board[1][0] == 0
     assert env.board[2][2] == 2
 
-    board, reward, done, info = env.step(GridTSP.STAY)
-
-    assert board[0][0] == 1
-    assert env.board[0][0] == 1
-    assert reward == env.reward_default
-    assert done is False
-    assert info['num_done_tasks'] == 0
-
     board, reward, done, info = env.step(GridTSP.RIGHT)
 
     assert board[0][0] == 0
