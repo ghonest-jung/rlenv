@@ -55,3 +55,17 @@ class GridTSP:
                 done = True
 
         return self.board, reward, done, self.info
+
+    def sample_action(self):
+        actions = []
+        if self.r != 0:
+            actions.append(GridTSP.UP)
+        if self.r != len(self.board) - 1:
+            actions.append(GridTSP.DOWN)
+
+        if self.c != 0:
+            actions.append(GridTSP.LEFT)
+        if self.c != len(self.board[0]) - 1:
+            actions.append(GridTSP.RIGHT)
+
+        return actions

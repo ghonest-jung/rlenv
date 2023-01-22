@@ -10,6 +10,8 @@ def test1():
     assert env.board[1][0] == 0
     assert env.board[2][2] == 2
 
+    assert env.sample_action() == [GridTSP.DOWN, GridTSP.RIGHT]
+
     board, reward, done, info = env.step(GridTSP.RIGHT)
 
     assert board[0][0] == 0
@@ -70,6 +72,8 @@ def test1():
     assert done is False
     assert info['num_done_tasks'] == 0
 
+    assert env.sample_action() == [GridTSP.DOWN, GridTSP.LEFT]
+
     board, reward, done, info = env.step(GridTSP.RIGHT)
 
     assert board[0][2] == 1
@@ -97,6 +101,8 @@ def test1():
     assert reward == 1
     assert done is True
     assert info['num_done_tasks'] == 1
+
+    assert env.sample_action() == [GridTSP.UP, GridTSP.LEFT]
 
 
 def test2():
@@ -148,8 +154,13 @@ def test3():
     assert done is False
     assert info['num_done_tasks'] == 1
 
+    assert env.sample_action() == [GridTSP.UP, GridTSP.RIGHT]
+
     board, reward, done, info = env.step(GridTSP.UP)
 
     assert reward == 1
     assert done is True
     assert info['num_done_tasks'] == 2
+
+    assert env.sample_action() == [GridTSP.UP, GridTSP.DOWN, GridTSP.RIGHT]
+
