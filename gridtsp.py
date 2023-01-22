@@ -1,3 +1,6 @@
+import random
+
+
 class GridTSP:
     UP: int = 0
     DOWN: int = 1
@@ -7,21 +10,44 @@ class GridTSP:
     DELTA_R = [-1, 1, 0, 0]
     DELTA_C = [0, 0, -1, 1]
 
-    def __init__(self, size: tuple, start: tuple, tasks: list, reward_default: float = 0):
+    def __init__(self, size: tuple, max_num_tasks: int, reward_default: float = 0):
         self.size: tuple = size
-        self.start: tuple = start
-        self.tasks: list[tuple] = tasks
+        self.start: tuple = (0, 0)
+        self.max_num_tasks: int = max_num_tasks
+        self.tasks: list[tuple] = []
         self.reward_default: float = reward_default
 
-        self.board = [[0 for c in range(self.size[1])] for r in range(self.size[0])]
+        self.board = [[0 for _ in range(self.size[1])] for _ in range(self.size[0])]
         self.r: int = 0
         self.c: int = 0
         self.info: dict = {}
 
+        self.avail_coord = []
+
+        for _r in range(size[0]):
+            for _c in range(size[1]):
+                self.avail_coord.append((_r, _c))
+
         self.reset()
 
-    def reset(self):
-        self.board = [[0 for c in range(self.size[1])] for r in range(self.size[0])]
+    def reset(self, seed: int = None, start: tuple = None, tasks: list[tuple] = None):
+        if seed is not None:
+            random.seed(seed)
+
+        if start is None:
+            self.start = (random.randint(0, self.size[0] - 1), random.randint(0, self.size[1] - 1))
+        else:
+            self.start = start
+
+        if tasks is None:
+            self.avail_coord.remove(self.start)
+            num_tasks = random.randint(1, self.max_num_tasks)
+            self.tasks = random.choices(self.avail_coord, k=num_tasks)
+            self.avail_coord.append(self.start)
+        else:
+            self.tasks = tasks
+
+        self.board = [[0 for _ in range(self.size[1])] for _ in range(self.size[0])]
         self.r = self.start[0]
         self.c = self.start[1]
 

@@ -4,8 +4,8 @@ from gridtsp import GridTSP
 
 
 def test1():
-    env = GridTSP((3, 3), (0, 0), [(2, 2)])
-
+    env = GridTSP((3, 3), max_num_tasks=1)
+    env.reset(start=(0, 0), tasks=[(2, 2)])
     assert env.board[0][0] == 1
     assert env.board[1][0] == 0
     assert env.board[2][2] == 2
@@ -106,7 +106,8 @@ def test1():
 
 
 def test2():
-    env = GridTSP((3, 3), (0, 0), [(1, 0), (2, 2)])
+    env = GridTSP((3, 3), max_num_tasks=2)
+    env.reset(start=(0, 0), tasks=[(1, 0), (2, 2)])
 
     board, reward, done, info = env.step(GridTSP.DOWN)
 
@@ -134,7 +135,8 @@ def test2():
 
 
 def test3():
-    env = GridTSP((3, 3), (2, 1), [(1, 0), (2, 2)])
+    env = GridTSP((3, 3), max_num_tasks=2)
+    env.reset(start=(2, 1), tasks=[(1, 0), (2, 2)])
 
     board, reward, done, info = env.step(GridTSP.RIGHT)
 
@@ -164,3 +166,9 @@ def test3():
 
     assert env.sample_action() == [GridTSP.UP, GridTSP.DOWN, GridTSP.RIGHT]
 
+
+def test4():
+    env = GridTSP((3, 3), max_num_tasks=2)
+    env.reset(seed=0)
+
+    assert len(env.tasks) <= env.max_num_tasks
