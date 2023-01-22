@@ -42,7 +42,7 @@ class GridTSP:
         if tasks is None:
             self.avail_coord.remove(self.start)
             num_tasks = random.randint(1, self.max_num_tasks)
-            self.tasks = random.choices(self.avail_coord, k=num_tasks)
+            self.tasks = random.sample(self.avail_coord, k=num_tasks)
             self.avail_coord.append(self.start)
         else:
             self.tasks = tasks
