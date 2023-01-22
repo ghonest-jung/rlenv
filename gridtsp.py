@@ -30,7 +30,7 @@ class GridTSP:
 
         self.reset()
 
-    def reset(self, seed: int = None, start: tuple = None, tasks: list[tuple] = None):
+    def reset(self, seed: int = None, start: tuple = None, tasks: list = None):
         if seed is not None:
             random.seed(seed)
 
