@@ -22,6 +22,7 @@ def test1():
     assert done is False
     assert info['num_done_tasks'] == 0
     assert info['location'] == (0, 1)
+    assert info['tasks'] == [(2, 2)]
 
     board, reward, done, info = env.step(GridTSP.LEFT)
 
