@@ -21,6 +21,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (0, 1)
 
     board, reward, done, info = env.step(GridTSP.LEFT)
 
@@ -31,6 +32,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (0, 0)
 
     board, reward, done, info = env.step(GridTSP.DOWN)
 
@@ -41,6 +43,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (1, 0)
 
     board, reward, done, info = env.step(GridTSP.UP)
 
@@ -51,6 +54,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (0, 0)
 
     board, reward, done, info = env.step(GridTSP.RIGHT)
 
@@ -61,6 +65,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (0, 1)
 
     board, reward, done, info = env.step(GridTSP.RIGHT)
 
@@ -71,6 +76,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (0, 2)
 
     assert env.sample_action() == [GridTSP.DOWN, GridTSP.LEFT]
 
@@ -81,6 +87,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (0, 2)
 
     board, reward, done, info = env.step(GridTSP.DOWN)
 
@@ -91,6 +98,7 @@ def test1():
     assert reward == env.reward_default
     assert done is False
     assert info['num_done_tasks'] == 0
+    assert info['location'] == (1, 2)
 
     board, reward, done, info = env.step(GridTSP.DOWN)
 
@@ -101,6 +109,7 @@ def test1():
     assert reward == 1
     assert done is True
     assert info['num_done_tasks'] == 1
+    assert info['location'] == (2, 2)
 
     assert env.sample_action() == [GridTSP.UP, GridTSP.LEFT]
 

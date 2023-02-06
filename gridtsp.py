@@ -53,6 +53,7 @@ class GridTSP:
 
         self.info = {
             "num_done_tasks": 0,
+            "location": start
         }
 
         self.board[self.r][self.c] = 1
@@ -79,6 +80,8 @@ class GridTSP:
 
             if self.info['num_done_tasks'] == len(self.tasks):
                 done = True
+
+            self.info['location'] = (self.r, self.c)
 
         return self.board, reward, done, self.info
 
