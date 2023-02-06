@@ -53,8 +53,8 @@ class GridTSP:
 
         self.info = {
             "num_done_tasks": 0,
-            "location": start,
-            "tasks": tasks
+            "location": self.start,
+            "tasks": self.tasks
         }
 
         self.board[self.r][self.c] = 1
